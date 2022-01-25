@@ -50,12 +50,24 @@ class Main {
 					}}
 				]
 			}));
+
+			var fileMenuItem:MenuItem = menu.getMenuItemById("File");
+			fileMenuItem.submenu.append(new MenuItem({
+				label: "Open",
+				click: (m,b,e)->{
+					
+				},
+			}));
+
 			electron.main.Menu.setApplicationMenu(menu);
 		});
+		
 
 		electron.main.App.on( window_all_closed, e -> {
 			if( process.platform != 'darwin' ) electron.main.App.quit();
 		});
+
+
 	}
 
 }
