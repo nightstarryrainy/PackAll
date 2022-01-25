@@ -1,0 +1,18 @@
+{
+    "name": "Pack",
+    "version": "0.2.0",
+    "license": "MIT",
+    "description": "A Image Pack Tool",
+    "repository": "https://github.com/tong/hxelectron",
+    "main": "main.js",
+    "scripts": {
+        "clean": "rm -f main.js* app.js*",
+        "build-main": "haxe main.hxml",
+        "build-app": "haxe app.hxml",
+        "build": "npm run build-main && npm run build-app",
+        "start": "electron ."
+    },
+    "devDependencies": {
+        "electron": "^16.0.7"
+    }
+}
