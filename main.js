@@ -31,6 +31,20 @@ Main.main = function() {
 				win.webContents.openDevTools();
 			}
 		}}]}));
+		var _g = 0;
+		var _g1 = menu.items;
+		while(_g < _g1.length) {
+			var item = _g1[_g];
+			++_g;
+			if(item.label == "File") {
+				var fileMenuItem = item;
+				fileMenuItem.submenu.insert(0,new electron_main_MenuItem({ label : "Open", click : function(m,b,e) {
+					var path = electron_main_Dialog.showOpenDialogSync(null,{ defaultPath : Main.openDefaultPath, properties : ["openFile","openDirectory"]});
+					var tmp = path != null;
+				}}));
+				break;
+			}
+		}
 		electron_main_Menu.setApplicationMenu(menu);
 	});
 	electron_main_App.on("window-all-closed",function(e) {
@@ -47,6 +61,7 @@ Std.string = function(s) {
 };
 var electron_main_App = require("electron").app;
 var electron_main_BrowserWindow = require("electron").BrowserWindow;
+var electron_main_Dialog = require("electron").dialog;
 var electron_main_Menu = require("electron").Menu;
 var electron_main_MenuItem = require("electron").MenuItem;
 var haxe_iterators_ArrayIterator = function(array) {
@@ -131,6 +146,7 @@ js_Boot.__string_rec = function(o,s) {
 String.__name__ = true;
 Array.__name__ = true;
 js_Boot.__toStr = ({ }).toString;
+Main.openDefaultPath = "C://";
 Main.main();
 })({});
 
