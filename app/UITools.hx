@@ -16,7 +16,6 @@ class UITools{
             var contentPromise = window.loadURL("data:text/html;charset=utf-8," + StringTools.htmlEscape(progressBarHtmlString));
             if(contentPromise!=null){
                 contentPromise.then(_->{
-                    document
                 },_->{});
             }
         }
